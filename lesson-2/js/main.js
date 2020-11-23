@@ -8,10 +8,13 @@ let money = 5000,
 console.log(typeof money);
 console.log(typeof income);
 console.log(typeof deposit);
-console.log(addExpenses);
+console.log(addExpenses.length);
 console.log(`Период равен ${period} меяцев`);
 console.log(`Цель заработать ${mission} рублей`);
 
-let lowerCase = addExpenses.toLowerCase();
+addExpenses = addExpenses.toLowerCase();
 
-console.log(lowerCase.split(', '));
+console.log(addExpenses.split(', '));
+
+const budgetDay = money / 30;
+console.log(budgetDay);
