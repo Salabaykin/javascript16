@@ -1,19 +1,47 @@
-let num  = 266219;
+'use strict';
 
-// Поменяем тип number на string и разобьем строку на массив
-const numStr = num.toString().split('');
+// ПЕРВОЕ ЗАДАНИЕ
 
-// Каждое значение из массива перемножим дрг на друга 
-// Используем метод перебора массива reduce 
-let res = numStr.reduce((a, b) => {
-    return a * b;
-});
+const lang = prompt('ru или en ?');
 
-// Результат умножения 
-console.log(res);
+const arrRus = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'];
+const arrEng = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
-// Результат возведения в степень 
-console.log(res **= 3);
+// С использованием if
 
-// Выведем в консоль первые две цифры 
-console.log(res.toString().substr(0, 2));
+// if (lang == 'ru') {
+//     console.log(arrRus);
+// } else if (lang == 'en') {
+//     console.log(arrEng);
+// } else {
+//     console.log('Ошибка');
+// }
+
+// С использованием switch-case
+
+// switch(lang) {
+//     case 'ru': 
+//         console.log(arrRus);
+//         break;
+//     case 'en': 
+//         console.log(arrEng);
+//         break;
+//     default:
+//         console.log('Ошибка');
+// }
+
+// С использованием многомерного массива 
+
+const arrBox = {
+    'ru': [...arrRus],
+    'en': [...arrEng]
+};
+console.log(arrBox[lang]);
+
+// ВТОРОЕ ЗАДАНИЕ
+
+const namePerson = prompt('Как зовут директора GloAcademy ?');
+
+namePerson == 'Артем' ? console.log('директор') : '';
+namePerson == 'Максим' ? console.log('преподаватель') : '';
+namePerson != 'Артем' && namePerson != 'Максим' ? console.log('Студент') : '';
