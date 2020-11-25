@@ -1,47 +1,19 @@
 'use strict';
 
-// ПЕРВОЕ ЗАДАНИЕ
+const res = prompt('Какая-нибудь строка, которую передаем в функцию', '            Привет, Анька :)                ');
 
-const lang = prompt('ru или en ?');
+function foo(arg) {
+    if (typeof arg !== 'string') {
+        alert('Ошибка! Вы ввели НЕ строку');
+    } else {
+        // Убираем все пробелы
+        console.log(`Методом trim() убрали все пробелы в начале и в конце - ${arg.trim()}`);
+        // Если длина строки больше 30, то обрезаем 
+        if (arg.length > 30) {
+            let res = arg.substr(0, 30);
+            console.log(`Длина строки: ${arg.length}. Обрезаем: ${res}...`);
+        } 
+    }
+}
 
-const arrRus = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'];
-const arrEng = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-
-// С использованием if
-
-// if (lang == 'ru') {
-//     console.log(arrRus);
-// } else if (lang == 'en') {
-//     console.log(arrEng);
-// } else {
-//     console.log('Ошибка');
-// }
-
-// С использованием switch-case
-
-// switch(lang) {
-//     case 'ru': 
-//         console.log(arrRus);
-//         break;
-//     case 'en': 
-//         console.log(arrEng);
-//         break;
-//     default:
-//         console.log('Ошибка');
-// }
-
-// С использованием многомерного массива 
-
-const arrBox = {
-    'ru': [...arrRus],
-    'en': [...arrEng]
-};
-console.log(arrBox[lang]);
-
-// ВТОРОЕ ЗАДАНИЕ
-
-const namePerson = prompt('Как зовут директора GloAcademy ?');
-
-namePerson == 'Артем' ? console.log('директор') : '';
-namePerson == 'Максим' ? console.log('преподаватель') : '';
-namePerson != 'Артем' && namePerson != 'Максим' ? console.log('Студент') : '';
+foo(res);
