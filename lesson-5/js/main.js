@@ -1,8 +1,8 @@
 'use strict';
 
-let money = prompt('Ваш месячный доход?'),
+const money = +prompt('Ваш месячный доход?'),
     income = 'Фриланс', 
-    addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую'),
+    addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую').toLowerCase(),
     deposit = confirm('Есть ли у вас депозит в банке?'),
     mission = 100000,
     period = 6;
@@ -13,29 +13,35 @@ function showTypeOf() {
 }
 console.log(showTypeOf());
 
-addExpenses = addExpenses.toLowerCase();
-
 console.log(addExpenses.split(', '));
 
-const expenses1 = prompt('Введите обязательную статью расходов?', 'Коммуналка');
-const amount1 = prompt('Во сколько это обойдется?', '3000');
-const expenses2 = prompt('Введите обязательную статью расходов?', 'Кредит');
-const amount2 = prompt('Во сколько это обойдется?', '1000');
+// const expenses1 = prompt('Введите обязательную статью расходов?', 'Коммуналка');
+// const amount1 = prompt('Во сколько это обойдется?', '3000');
+// const expenses2 = prompt('Введите обязательную статью расходов?', 'Кредит');
+// const amount2 = prompt('Во сколько это обойдется?', '1000');
 
-// LESSON 4
+let expenses = [];
 
 // Сумма всех обязательных расходов за месяц
-function getExpensesMonth(a, b) {
-    return +a + +b;
+function getExpensesMonth() {
+    let sum = 0;
+
+    expenses[i] = prompt('Введите обязательную статью расходов?');
+
+    for(let i = 0; i < 2; i++) {
+        sum += +prompt('Во сколько это обойдется?', '3000');
+    }
+
+    return sum;
 }
-const expenses = getExpensesMonth(amount1, amount2);
-console.log(`Сумма всех обязательных расходов за месяц: ${expenses} руб.`);
+const expensesAmount = getExpensesMonth();
+console.log(`Сумма всех обязательных расходов за месяц: ${expensesAmount} руб.`);
 
 // Накопления за месяц
-function getAccumulatedMonth(a, b) {
-    return +a - +b;
+function getAccumulatedMonth(money, expenses) {
+    return money - expenses;
 }
-const accumulatedMonth = getAccumulatedMonth(money, expenses);
+const accumulatedMonth = getAccumulatedMonth(money, expensesAmount);
 
 // Дневной бюджет
 const budgetDay = Math.floor(accumulatedMonth/30);
