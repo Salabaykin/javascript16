@@ -1,7 +1,7 @@
 'use strict';
 
-let isNumber = function(n) {
-    return !isNaN(parseFloat(n)) && isFinite(n);
+let isNumber = function(n){
+    return (!isNaN(parseFloat(n)) && isFinite(n));
 };
 
 let money,
@@ -43,19 +43,19 @@ let expenses = [];
 
 // Сумма всех обязательных расходов за месяц
 function getExpensesMonth() {
-    let sum = 0;
+    let sum = 0, amount = 0;
 
     for(let i = 0; i < 2; i++) {
         expenses[i] = prompt('Введите обязательную статью расходов?');
-        sum += prompt('Во сколько это обойдется?');
-        
+        do {
+            amount = prompt('Во сколько это обойдется?');
+        } while (!isNumber(amount)) 
+
+        sum += +amount;
     }
 
-    while(!isNumber(sum)) {
-        console.log('Ошибка!');
-    }
-    
     return sum;
+    
 }
 const expensesAmount = getExpensesMonth();
 console.log(`Сумма всех обязательных расходов за месяц: ${expensesAmount} руб.`);
@@ -75,7 +75,13 @@ function getTargetMonth() {
     return Math.ceil(mission/accumulatedMonth);
 }
 const res = getTargetMonth();
-console.log(`Цель будет достигнута через: ${res} мес.`);
+
+if(res < 0) {
+    console.log('Цель не будет достигнута');
+} else {
+    console.log(`Цель будет достигнута через: ${res} мес.`);
+}
+
 
 // Уровень дохода
 function getStatusIncome() {
