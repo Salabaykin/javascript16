@@ -14,6 +14,10 @@ let money,
 
 start();
 
+function capitalize(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 let appData = {
         income: {},
         addIncome: [],
@@ -47,7 +51,7 @@ let appData = {
 
             let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую');
 
-            while (isNumber(itemIncome) || itemIncome === '' || itemIncome === null || itemIncome.trim() === '') {
+            while (isNumber(addExpenses) || addExpenses === '' || addExpenses === null || addExpenses.trim() === '') {
                 addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую');
             }
 
