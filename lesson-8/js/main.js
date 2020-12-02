@@ -70,6 +70,9 @@ let appData = {
 
             for(let i = 0; i < 2; i++) {
                 question = prompt('Введите обязательную статью расходов?', 'Aaa');
+                while (isNumber(question) || question === '' || question === null || question.trim() === '') {
+                    question = prompt('Введите обязательную статью расходов?', 'Aaa');
+                }
                 do {
                     answer = prompt('Во сколько это обойдется?', 200);
                 } while (!isNumber(answer)) 
@@ -102,9 +105,9 @@ let appData = {
         getInfoDeposit: function() {
             if (appData.deposit) {
 
-                appData.percentDeposit = prompt('Какой годовой процент?', '10');
-                while (isNumber(appData.percentDeposit) || appData.percentDeposit === '' || appData.percentDeposit === null || appData.percentDeposit.trim() === '') {
-                    appData.percentDeposit = prompt('Какой годовой процент?', '10');
+                appData.percentDeposit = prompt('Какой годовой процент?', 10);
+                while (isNaN(appData.percentDeposit) || appData.percentDeposit === '' || appData.percentDeposit === null || appData.percentDeposit.trim() === '') {
+                    appData.percentDeposit = prompt('Какой годовой процент?', 10);
                 }
                 appData.moneyDeposit = prompt('Какая сумма заложена?', 10000);  
                 while (isNaN(appData.moneyDeposit) || appData.moneyDeposit === '' || appData.moneyDeposit === null || appData.moneyDeposit.trim() === '') {
@@ -121,6 +124,7 @@ let appData = {
 appData.asking();
 appData.getExpensesMonth();
 appData.getBudget();
+appData.getInfoDeposit();
 
 // Сумма всех обязательных расходов за месяц
 console.log(`Сумма всех обязательных расходов за месяц: ${appData.expensesMonth} руб.`);
