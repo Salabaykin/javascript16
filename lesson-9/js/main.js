@@ -9,9 +9,6 @@ const checkBox = document.querySelector('#deposit-check');
 const additionalExpensesItem = document.querySelectorAll('.additional_expenses-item')[0];
 
 const budgetMonthValue = document.getElementsByClassName('budget_month-value')[0];
-
-console.log(budgetMonthValue);
-
 const budgetDayValue = document.getElementsByClassName('budget_day-value')[0];
 const expensesMonthValue = document.getElementsByClassName('expenses_month-value')[0];
 const additionalIncomeValue = document.getElementsByClassName('additional_income-value')[0];
