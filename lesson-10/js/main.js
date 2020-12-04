@@ -60,6 +60,7 @@ adv.remove();
 
 // Восстановим порядок глав 
 const listFir = book[0].querySelectorAll('ul > li');
+console.log(listFir);
 book[0].querySelector('ul').insertAdjacentElement('beforeend', listFir[0]);
 book[0].querySelector('ul').insertAdjacentElement('beforeend', listFir[1]);
 book[0].querySelector('ul').insertAdjacentElement('beforeend', listFir[3]);
@@ -73,8 +74,8 @@ book[0].querySelector('ul').insertAdjacentElement('beforeend', listFir[2]);
 book[0].querySelector('ul').insertAdjacentElement('beforeend', listFir[10]);
 
 const listSec = book[5].querySelectorAll('ul > li');
-book[0].querySelector('ul').insertAdjacentElement('beforeend', listSec[0]);
-book[0].querySelector('ul').insertAdjacentElement('beforeend', listSec[1]);
+book[5].querySelector('ul').insertAdjacentElement('beforeend', listSec[0]);
+book[5].querySelector('ul').insertAdjacentElement('beforeend', listSec[1]);
 book[5].querySelector('ul').insertAdjacentElement('beforeend', listSec[9]);
 book[5].querySelector('ul').insertAdjacentElement('beforeend', listSec[3]);
 book[5].querySelector('ul').insertAdjacentElement('beforeend', listSec[4]);
