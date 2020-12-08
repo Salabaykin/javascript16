@@ -175,11 +175,17 @@ periodSelect.addEventListener('input', function() {
     periodAmount.textContent = periodSelect.value;
 });
 
-start.disabled;
+start.disabled = true;
 start.style = 'cursor: not-allowed;';
+
 salaryAmount.addEventListener('input', function() {
     start.disabled = false;
     start.style = 'cursor: pointer;';
+
+    if (salaryAmount.value.trim() === '') {
+        start.disabled = true;
+        start.style = 'cursor: not-allowed;';
+    }
 });
 
 start.addEventListener('click', appData.startApp);
