@@ -49,7 +49,7 @@ let appData = {
         budgetDay: 0,
         budgetMonth: 0,
         expensesMonth: 0,
-        start: function() {
+        startApp: function() {
             appData.budget = +salaryAmount.value;
 
             appData.getExpenses();
@@ -94,6 +94,7 @@ let appData = {
 
                 if (incomeTitle !== '' && cashIncome !== '') {
                     appData.income[incomeTitle] = +cashIncome;
+                    appData.incomeMonth += +cashIncome;
                 }
             });
         },
@@ -174,14 +175,14 @@ periodSelect.addEventListener('input', function() {
     periodAmount.textContent = periodSelect.value;
 });
 
-start.setAttribute('disabled', 'disabled');
+start.disabled;
 start.style = 'cursor: not-allowed;';
 salaryAmount.addEventListener('input', function() {
-    start.removeAttribute('disabled');
+    start.disabled = false;
     start.style = 'cursor: pointer;';
 });
 
-start.addEventListener('click', appData.start);
+start.addEventListener('click', appData.startApp);
 
 expensesPlus.addEventListener('click', appData.addExpensesBlock);
 incomePlus.addEventListener('click', appData.addIncomeBlock);
