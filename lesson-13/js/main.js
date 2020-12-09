@@ -187,6 +187,20 @@ let appData = {
             });
         },
         formReset: function() {
+            this.budget = 0;
+            this.income = {};
+            this.addIncome = [];
+            this.expenses = {};
+            this.addExpenses = [];
+            this.deposit = false;
+            this.percentDeposit = 0;
+            this.incomeMonth = 0;
+            this.moneyDeposit = 0;
+            this.period = 0;
+            this.budgetDay = 0;
+            this.budgetMonth = 0;
+            this.expensesMon = 0;
+            
             inputForm.forEach(function(item) {
                 item.disabled = false;
                 inputCheckbox.checked = false;
@@ -197,9 +211,9 @@ let appData = {
                 startBtn.disabled = true;
                 startBtn.style = 'display: block;cursor: not-allowed;';
             });
-            resultInputList.forEach(function (item) {
-                item.value = '';
-                item.disabled = false;
+            [...document.querySelectorAll('input')].map(function (item) { 
+                item.value = ''; 
+                console.log('1');
             });
             incomeItems.forEach((item, i) => {
                 if (i > 0 && i < 3) {
