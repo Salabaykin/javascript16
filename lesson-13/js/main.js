@@ -24,7 +24,7 @@ const depositPercent = document.querySelector('.deposit-percent');
 const targetAmount = document.querySelector('.target-amount');
 const periodSelect = document.querySelector('.period-select');
 const inputForm = document.querySelectorAll('input[type=text]');
-const inputRange = document.querySelector('input[type=range]');
+const inputCheckbox = document.querySelector('input[type=checkbox]');
 
 const dataForm = document.querySelector('.data');
 const dataInputList = dataForm.querySelectorAll('input[type=text]');
@@ -182,7 +182,6 @@ let appData = {
             return this.budgetMonth * periodSelect.value;
         },
         inputDisabled: function() {
-            inputRange.disabled = true;
             dataInputList.forEach(item => {
                 item.disabled = true;
             });
@@ -190,7 +189,7 @@ let appData = {
         formReset: function() {
             inputForm.forEach(function(item) {
                 item.disabled = false;
-                inputRange.disabled = false;
+                inputCheckbox.checked = false;
                 item.value = '';
                 periodAmount.innerHTML = 1;
                 periodSelect.value = 1;
@@ -201,6 +200,18 @@ let appData = {
             resultInputList.forEach(function (item) {
                 item.value = '';
                 item.disabled = false;
+            });
+            incomeItems.forEach((item, i) => {
+                if (i > 0 && i < 3) {
+                    item.remove();
+                }
+                incomePlus.style.display = 'block';
+            });
+            expensesItems.forEach((item, i) => {
+                if (i > 0 && i < 3) {
+                    item.remove();
+                }
+                expensesPlus.style.display = 'block';
             });
         }
 }
