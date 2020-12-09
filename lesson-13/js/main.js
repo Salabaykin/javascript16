@@ -24,6 +24,7 @@ const depositPercent = document.querySelector('.deposit-percent');
 const targetAmount = document.querySelector('.target-amount');
 const periodSelect = document.querySelector('.period-select');
 const inputForm = document.querySelectorAll('input[type=text]');
+const inputRange = document.querySelectorAll('input[type=range]');
 const inputCheckbox = document.querySelector('input[type=checkbox]');
 
 const dataForm = document.querySelector('.data');
@@ -62,6 +63,7 @@ let appData = {
         start: function() {
             startBtn.style = 'display: none;';
             cancelBtn.style = 'display: block;';
+
             this.inputDisabled();
 
             this.budget = +salaryAmount.value;
@@ -182,9 +184,13 @@ let appData = {
             return this.budgetMonth * periodSelect.value;
         },
         inputDisabled: function() {
-            dataInputList.forEach(item => {
+            [...document.querySelectorAll('input[type=text]')].map(function (item) { 
                 item.disabled = true;
             });
+            periodSelect.disabled = true;
+            inputCheckbox.disabled = true;
+            incomePlus.disabled = true;
+            expensesPlus.disabled = true;
         },
         formReset: function() {
             this.budget = 0; 
@@ -209,9 +215,10 @@ let appData = {
                 periodSelect.value = 1;
                 cancelBtn.style = 'display: none;';
                 startBtn.disabled = true;
+                periodSelect.disabled = false;
                 startBtn.style = 'display: block;cursor: not-allowed;';
             });
-            [...document.querySelectorAll('input')].map(function (item) { 
+            [...document.querySelectorAll('input[type=text]')].map(function (item) { 
                 item.value = ''; 
             });
             incomeItems.forEach((item, i) => {
@@ -226,6 +233,10 @@ let appData = {
                 }
                 expensesPlus.style.display = 'block';
             });
+            periodSelect.value = 1; 
+            inputCheckbox.disabled = false;
+            incomePlus.disabled = false;
+            expensesPlus.disabled = false;
         }
 }
 
