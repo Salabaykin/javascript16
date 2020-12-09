@@ -187,19 +187,19 @@ let appData = {
             });
         },
         formReset: function() {
-            this.budget = 0;
-            this.income = {};
-            this.addIncome = [];
-            this.expenses = {};
-            this.addExpenses = [];
-            this.deposit = false;
-            this.percentDeposit = 0;
-            this.incomeMonth = 0;
-            this.moneyDeposit = 0;
-            this.period = 0;
-            this.budgetDay = 0;
-            this.budgetMonth = 0;
-            this.expensesMon = 0;
+            this.budget = 0; 
+            this.income = {}; 
+            this.addIncome = []; 
+            this.expenses = {}; 
+            this.addExpenses = []; 
+            this.deposit = false; 
+            this.percentDeposit = 0; 
+            this.incomeMonth = 0; 
+            this.moneyDeposit = 0; 
+            this.period = 6; 
+            this.budgetDay = 0; 
+            this.budgetMonth = 0; 
+            this.expensesMonth = 0;
             
             inputForm.forEach(function(item) {
                 item.disabled = false;
@@ -213,7 +213,6 @@ let appData = {
             });
             [...document.querySelectorAll('input')].map(function (item) { 
                 item.value = ''; 
-                console.log('1');
             });
             incomeItems.forEach((item, i) => {
                 if (i > 0 && i < 3) {
@@ -248,7 +247,7 @@ salaryAmount.addEventListener('input', function() {
 });
 
 startBtn.addEventListener('click', appData.start.bind(appData));
-cancelBtn.addEventListener('click', appData.formReset);
+cancelBtn.addEventListener('click', appData.formReset.bind(appData));
 
 expensesPlus.addEventListener('click', appData.addExpensesBlock);
 incomePlus.addEventListener('click', appData.addIncomeBlock);
