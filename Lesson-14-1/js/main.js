@@ -6,7 +6,7 @@ const DomElement = function(selector, height, width, bg, fontSize) {
     this.width = width;
     this.bg = bg;
     this.fontSize = fontSize;
-    this.createElem = function(selector) {
+    this.createElem = function() {
         if (selector.indexOf('.') !== -1) {
             const elem = document.createElement('div');
             elem.textContent = 'Пример текста';
@@ -23,5 +23,5 @@ const DomElement = function(selector, height, width, bg, fontSize) {
     }
 };
 
-const domElement = new DomElement();
-domElement.createElem('#class-name', '100px', '100px', 'green', '18px')
+const domElement = new DomElement('#class-name', '100px', '100px', 'green', '18px');
+domElement.createElem();
