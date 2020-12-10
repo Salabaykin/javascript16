@@ -116,6 +116,20 @@ AppData.prototype.getIncome = function() {
         }
     });
 };
+AppData.prototype.getExpInc = function() {
+    const count = (item) => {
+        const startStr = item.className.split('-')[0];
+        const itemTitle = item.querySelector(`.${startStr}-title`).value;
+        const ItemAmount = item.querySelector(`.${startStr}-amount`).value;
+        if (itemTitle !== '' && ItemAmount !== '') {
+            this[startStr][itemTitle] = +ItemAmount;
+            this.incomeMonth += +ItemAmount;
+        }
+    }
+
+    expensesItems.forEach(count);
+    incomeItems.forEach(count);
+};
 AppData.prototype.getAddExpenses = function() {
     let addExpanses = additionalExpensesItem.value.split(',');
 
