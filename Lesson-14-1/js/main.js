@@ -10,13 +10,13 @@ const DomElement = function(selector, height, width, bg, fontSize) {
         if (selector.indexOf('.') !== -1) {
             const elem = document.createElement('div');
             elem.textContent = 'Пример текста';
-            elem.style.cssText = `height: ${height};width: ${width};background: ${bg};fontSize: ${fontSize};`;
+            elem.style.cssText = `height: ${height};width: ${width};background: ${bg};font-size: ${fontSize};`;
             elem.classList.add(selector.slice(1));
             document.body.append(elem);
         } else if (selector.indexOf('#') !== -1) {
             const elem = document.createElement('p');
             elem.textContent = 'Пример текста';
-            elem.style.cssText = `height: ${height};width: ${width};background: ${bg};fontSize: ${fontSize};`;
+            elem.style.cssText = `height: ${height};width: ${width};background: ${bg};font-size: ${fontSize};`;
             elem.id = selector.slice(1);
             document.body.append(elem);
         }
