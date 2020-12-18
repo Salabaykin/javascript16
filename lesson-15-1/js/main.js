@@ -64,9 +64,9 @@ class AppData {
         this.budget = +salaryAmount.value;
 
         this.getExpInc();
-        this.getExpensesMonth();
         this.getAddExpenses();
         this.getAddIncome();
+        this.getExpensesMonth();
         this.getBudget();
     
         this.showResult();
@@ -94,15 +94,18 @@ class AppData {
         const count = (item) => {
             const startStr = item.className.split('-')[0];
             const itemTitle = item.querySelector(`.${startStr}-title`).value;
-            const ItemAmount = item.querySelector(`.${startStr}-amount`).value;
-            if (itemTitle !== '' && ItemAmount !== '') {
-                this[startStr][itemTitle] = +ItemAmount;
-                this.incomeMonth += +ItemAmount;
+            const itemAmount = item.querySelector(`.${startStr}-amount`).value;
+            if (itemTitle !== '' && itemAmount !== '') {
+                this[startStr][itemTitle] = +itemAmount;
             }
         }
     
         expensesItems.forEach(count);
         incomeItems.forEach(count);
+
+        for( let key in this.income ){
+            this.incomeMonth += this.income[key];
+        }
     }
 
     getAddExpenses() {
@@ -134,7 +137,7 @@ class AppData {
         additionalIncomeValue.value = this.addIncome.join(', ');
         targetMonthValue.value = this.getTargetMonth();
         incomePeriodValue.value = this.calcPeriod();
-        periodSelect.addEventListener('input', function() {
+        periodSelect.addEventListener('input', () => {
             incomePeriodValue.value = this.budgetMonth * periodSelect.value;
         });
     }
@@ -184,7 +187,7 @@ class AppData {
     }
 
     inputDisabled() {
-        [...document.querySelectorAll('input[type=text]')].map(function (item) { 
+        [...document.querySelectorAll('input[type=text]')].map((item) => { 
             item.disabled = true;
         });
         periodSelect.disabled = true;
@@ -208,7 +211,7 @@ class AppData {
         this.budgetMonth = 0; 
         this.expensesMonth = 0;
         
-        inputForm.forEach(function(item) {
+        inputForm.forEach((item) => {
             item.disabled = false;
             inputCheckbox.checked = false;
             item.value = '';
@@ -219,7 +222,7 @@ class AppData {
             periodSelect.disabled = false;
             startBtn.style = 'display: block;cursor: not-allowed;';
         });
-        [...document.querySelectorAll('input[type=text]')].map(function (item) { 
+        [...document.querySelectorAll('input[type=text]')].map((item) => { 
             item.value = ''; 
         });
         incomeItems.forEach((item, i) => {
@@ -241,14 +244,14 @@ class AppData {
     }
 
     eventListeners() {
-        periodSelect.addEventListener('input', function() {
+        periodSelect.addEventListener('input', () => {
             periodAmount.textContent = periodSelect.value;
         });
         
         startBtn.disabled = true;
         startBtn.style = 'cursor: not-allowed;';
         
-        salaryAmount.addEventListener('input', function() {
+        salaryAmount.addEventListener('input', () => {
             startBtn.disabled = false;
             startBtn.style = 'cursor: pointer;';
         
