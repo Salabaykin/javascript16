@@ -190,7 +190,7 @@ class AppData {
         [...document.querySelectorAll('input[type=text]')].map((item) => { 
             item.disabled = true;
         });
-        periodSelect.disabled = true;
+        //periodSelect.disabled = true;
         inputCheckbox.disabled = true;
         incomePlus.disabled = true;
         expensesPlus.disabled = true;
