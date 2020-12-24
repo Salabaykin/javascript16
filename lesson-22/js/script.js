@@ -43,6 +43,7 @@ class Todo {
 
     addTodo(e) {
         e.preventDefault();
+
         if (this.input.value.trim()) {
             const newTodo = {
                 value: this.input.value,
@@ -50,6 +51,7 @@ class Todo {
                 key: this.generateKey(),
             };
             this.todoData.set(newTodo.key, newTodo);
+            this.input.value = '';
             this.render();
         } else {
             alert('Пустое дело добавить нельзя!');
