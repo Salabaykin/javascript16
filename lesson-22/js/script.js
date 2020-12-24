@@ -24,7 +24,7 @@ class Todo {
     createItem = (todo) => {
         const li = document.createElement('li');
         li.classList.add('todo-item');
-        //li.key = key;
+        li.key = todo.key;
         
         li.insertAdjacentHTML('beforeend', `
             <span class="text-todo">${todo.value}</span>
@@ -60,24 +60,35 @@ class Todo {
         return (~~(Math.random()*1e8)).toString(16);
     }
 
-    deleteItem() {
-        // По ключи найти элемент и удалить 
+    deleteItem(key) {
+        this.todoData.forEach((elem) => {
+            if (elem.key === key) {
+                this.todoData.delete(elem.key);
+                this.render();
+            }
+        });
     }
 
-    completedItem() {
-        // Перебрать элементы 
+    completedItem(key) {
+        this.todoData.forEach((elem) => {
+            if (elem.key === key) {
+                elem.completed = !elem.completed;
+                this.render();
+            }
+        });
     }
 
     handler() {
-        // Делегирование
         this.todoContainer.addEventListener('click', (event) => {
             const target = event.target,
                   key = target.parentNode.parentNode.key;
-            console.log(key);
 
             if(target.matches('.todo-remove')) {
-                //this.deleteItem(key);
-                console.log('Del');
+                this.deleteItem(key);
+            }
+
+            if (target.matches('.todo-complete')) {
+                this.completedItem(key);
             }
         });
     }
